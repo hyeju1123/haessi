@@ -4,6 +4,7 @@ import "./globals.css";
 import Tags from "@/components/Tags";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TagsProvider from "@/provider/TagsProvider";
 
 const gothic = Nanum_Gothic({
   weight: ["400", "700", "800"],
@@ -22,15 +23,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={gothic.className}>
-      <body className="relative flex w-full min-h-screen">
-        <nav className="hidden 2xl:block fixed max-w-72 m-16">
-          <Tags />
-        </nav>
-        <div className="flex flex-col w-full max-w-screen-md mx-auto">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+      <body className="flex justify-center w-full min-h-screen">
+        <TagsProvider>
+          <section className="flex flex-col w-full max-w-screen-md">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </section>
+          <section className="w-auto flex justify-start">
+            <nav className="fixed hidden 2xl:block max-w-72 ml-10 mt-36">
+              <Tags />
+            </nav>
+          </section>
+        </TagsProvider>
       </body>
     </html>
   );

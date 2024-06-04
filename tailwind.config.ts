@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import { theme } from "./colors";
 
 const {
-  light: { background, tagBg, codeBg, text, textEmph },
+  light: { background, tagBg, hoverTagBg, codeBg, text, textEmph },
 } = theme;
 
 const config: Config = {
@@ -22,6 +22,7 @@ const config: Config = {
     colors: {
       background: background,
       tagBg: tagBg,
+      hoverTagBg: hoverTagBg,
       codeBg: codeBg,
       text: text,
       textEmph: textEmph,
