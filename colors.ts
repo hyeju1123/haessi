@@ -14,7 +14,7 @@ export const theme: Theme = {
     background: "#FFFFFF",
     tagBg: "#E4F0FB",
     hoverTagBg: "#d3e7f8",
-    codeBg: "#32435F",
+    codeBg: "#212121",
     text: "#486084",
     textEmph: "#F8F1AE",
   },

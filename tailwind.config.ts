@@ -27,8 +27,24 @@ const config: Config = {
       text: text,
       textEmph: textEmph,
     },
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: text,
+            pre: { background: codeBg },
+            a: { color: text },
+            h1: { color: text },
+            h2: { color: text },
+            h3: { color: text },
+            strong: { color: text },
+            blockquote: { color: text },
+            code: { color: text, background: textEmph },
+          },
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

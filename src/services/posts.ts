@@ -8,6 +8,10 @@ export type Post = {
   path: string;
 };
 
+export type PostData = Post & {
+  content: string;
+};
+
 export type Tag = {
   [index: string]: number;
 };
@@ -17,6 +21,17 @@ export async function getAllPosts(): Promise<Post[]> {
   return readFile(filePath, "utf-8")
     .then<Post[]>(JSON.parse)
     .then(posts => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
+}
+
+export async function getPostData(fileName: string): Promise<PostData> {
+  const posts = await getAllPosts();
+  const post = posts.find(post => post.path === fileName);
+
+  if (!post) throw new Error("No corresponding posts found");
+
+  const filePath = path.join(process.cwd(), "data/posts", `${fileName}.md`);
+  const content = await readFile(filePath, "utf-8");
+  return { ...post, content };
 }
 
 export async function getTags(): Promise<Tag> {
