@@ -1,19 +1,19 @@
 "use client";
 
-import { Roboto_Slab } from "next/font/google";
-import Link from "next/link";
-import Moon from "../../public/images/moon.svg";
-import { theme } from "../../colors";
 import { useContext } from "react";
+
+import Link from "next/link";
+import ThemeIcon from "./icons/ThemeIcon";
+import { useTheme } from "next-themes";
+import { Roboto_Slab } from "next/font/google";
 import { ALL, TagsContext } from "@/provider/TagsProvider";
 
 const roboto = Roboto_Slab({ subsets: ["latin"] });
-const {
-  light: { text },
-} = theme;
 
 export default function Header() {
+  const { theme, setTheme } = useTheme();
   const { handleTag } = useContext(TagsContext);
+
   return (
     <header className="flex justify-between px-4 py-12">
       <Link href={"/"} onClick={() => handleTag(ALL)}>
@@ -21,7 +21,9 @@ export default function Header() {
           23haessi
         </h1>
       </Link>
-      <Moon width="28" height="28" fill={text} />
+      <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        <ThemeIcon />
+      </button>
     </header>
   );
 }

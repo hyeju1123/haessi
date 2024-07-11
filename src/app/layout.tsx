@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
+
 import "./globals.css";
 import Tags from "@/components/Tags";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TagsProvider from "@/provider/TagsProvider";
+import ThemeProvider from "@/provider/ThemeProvider";
 
 const gothic = Nanum_Gothic({
   weight: ["400", "700", "800"],
@@ -23,19 +25,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={gothic.className}>
-      <body className="flex justify-center w-full min-h-screen">
-        <TagsProvider>
-          <section className="flex flex-col w-full max-w-screen-md">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </section>
-          <section className="w-auto flex justify-start">
-            <nav className="fixed hidden 2xl:block max-w-72 ml-10 mt-36">
-              <Tags />
-            </nav>
-          </section>
-        </TagsProvider>
+      <body>
+        <ThemeProvider>
+          <div className="flex justify-center w-full min-h-screen bg-background">
+            <TagsProvider>
+              <section className="flex flex-col w-full max-w-screen-md">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </section>
+              <section className="w-auto flex justify-start">
+                <Tags />
+              </section>
+            </TagsProvider>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
