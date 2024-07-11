@@ -1,9 +1,4 @@
 import type { Config } from "tailwindcss";
-import { theme } from "./colors";
-
-const {
-  light: { background, tagBg, hoverTagBg, codeBg, text, textEmph },
-} = theme;
 
 const config: Config = {
   content: [
@@ -20,26 +15,26 @@ const config: Config = {
       "2xl": "1536px",
     },
     colors: {
-      background: background,
-      tagBg: tagBg,
-      hoverTagBg: hoverTagBg,
-      codeBg: codeBg,
-      text: text,
-      textEmph: textEmph,
+      background: "var(--background)",
+      tagBg: "var(--tagBg)",
+      hoverTagBg: "var(--hoverTagBg)",
+      codeBg: "var(--codeBg)",
+      text: "var(--text)",
+      textEmph: "var(--textEmph)",
     },
     extend: {
       typography: {
         DEFAULT: {
           css: {
-            color: text,
-            pre: { background: codeBg },
-            a: { color: text },
-            h1: { color: text },
-            h2: { color: text },
-            h3: { color: text },
-            strong: { color: text },
-            blockquote: { color: text },
-            code: { color: text, background: textEmph },
+            color: "var(--text)",
+            pre: { background: "var(--codeBg)" },
+            a: { color: "var(--text)" },
+            h1: { color: "var(--text)" },
+            h2: { color: "var(--text)" },
+            h3: { color: "var(--text)" },
+            strong: { color: "var(--text)" },
+            blockquote: { color: "var(--text)" },
+            code: { color: "var(--text)", background: "var(--textEmph)" },
           },
         },
       },
