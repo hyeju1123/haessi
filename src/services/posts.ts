@@ -3,6 +3,7 @@ import { readFile } from "fs/promises";
 
 export type Post = {
   title: string;
+  description: string;
   date: Date;
   categories: string[];
   path: string;
