@@ -1,13 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { theme as color } from "../../../colors";
-
+import useThemeColor from "@/hooks/ThemeColor";
 import Copyright from "../../../public/images/copyright.svg";
 
 export default function CopyrightIcon() {
-  const { theme } = useTheme();
-  const { text } = color[theme || "light"];
-
+  const { text } = useThemeColor();
   return <Copyright className="mx-1" width="12" height="12" fill={text} />;
 }

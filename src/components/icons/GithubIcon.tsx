@@ -1,13 +1,10 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { theme as color } from "../../../colors";
-
+import useColorTheme from "@/hooks/ThemeColor";
 import Github from "../../../public/images/github.svg";
 
 export default function GithubIcon() {
-  const { theme } = useTheme();
-  const { text } = color[theme || "light"];
+  const { text } = useColorTheme();
 
   return <Github className="mx-2" width="26" height="26" fill={text} />;
 }

@@ -4,14 +4,14 @@ import { useContext } from "react";
 
 import Link from "next/link";
 import ThemeIcon from "./icons/ThemeIcon";
-import { useTheme } from "next-themes";
+import useColorTheme from "@/hooks/ThemeColor";
 import { Roboto_Slab } from "next/font/google";
 import { ALL, TagsContext } from "@/provider/TagsProvider";
 
 const roboto = Roboto_Slab({ subsets: ["latin"] });
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useColorTheme();
   const { handleTag } = useContext(TagsContext);
 
   return (
