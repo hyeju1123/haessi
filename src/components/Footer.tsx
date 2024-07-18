@@ -16,7 +16,9 @@ export default function Footer() {
         <Link href={"https://github.com/hyeju1123"}>
           <GithubIcon />
         </Link>
-        <EnvelopeIcon />
+        <Link href="mailto:hjjun1123@gmail.com">
+          <EnvelopeIcon />
+        </Link>
       </section>
       <section className="flex items-center">
         <CopyrightIcon />
