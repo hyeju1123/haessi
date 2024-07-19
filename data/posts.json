@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "title": "이분탐색이 너무 헷갈려서 쓰는 글",
+    "description": "이진탐색과 upper bound, lower bound에 대해서 알아보자",
+    "date": "2024.07.19",
+    "categories": ["알고리즘"],
+    "path": "binarySearch240719"
+  }
+]
