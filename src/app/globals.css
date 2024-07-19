@@ -8,7 +8,8 @@
   --hoverTagBg: #d3e7f8;
   --codeBg: #212121;
   --text: #486084;
-  --textEmph: #f8f1ae;
+  --textEmph: #486084;
+  --textEmphBg: #f8f1ae;
 }
 
 [data-theme="dark"] {
@@ -17,5 +18,6 @@
   --hoverTagBg: #394863;
   --codeBg: #24272f;
   --text: #ecd9d8;
-  --textEmph: #3c3a36;
+  --textEmph: #ec4899;
+  --textEmphBg: #3c3a36;
 }

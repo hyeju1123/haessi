@@ -21,6 +21,7 @@ const config: Config = {
       codeBg: "var(--codeBg)",
       text: "var(--text)",
       textEmph: "var(--textEmph)",
+      textEmphBg: "var(--textEmphBg)",
     },
     extend: {
       typography: {
@@ -34,7 +35,7 @@ const config: Config = {
             h3: { color: "var(--text)" },
             strong: { color: "var(--text)" },
             blockquote: { color: "var(--text)" },
-            code: { color: "var(--text)", background: "var(--textEmph)" },
+            code: { color: "var(--textEmph)", background: "var(--textEmphBg)" },
           },
         },
       },
