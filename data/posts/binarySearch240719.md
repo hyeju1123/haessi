@@ -25,7 +25,7 @@
 
 &nbsp; &nbsp;
 
-![img3](https://github.com/user-attachments/assets/27327968-3f3b-4dc7-bf7e-9f5862610171)
+![pic3](https://github.com/user-attachments/assets/27ca9eb9-96c2-46a1-ad87-9d0c84b6e577)
 
 반대로, **3보다 작거나 같은 수**라는 조건으로 가져가면 `arr`은 `[true, true, true, false, false]`가 될 것이다.
 
