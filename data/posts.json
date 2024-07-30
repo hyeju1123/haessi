@@ -1,5 +1,12 @@
 [
   {
+    "title": "Invalid hook call 에러와 useState",
+    "description": "if문 안에서 useState를 사용할 수 없는 이유에 관하여",
+    "date": "2024.07.30",
+    "categories": ["React"],
+    "path": "useState240730"
+  },
+  {
     "title": "이분탐색이 너무 헷갈려서 쓰는 글",
     "description": "이진탐색과 upper bound, lower bound에 대해서 알아보자",
     "date": "2024.07.19",
