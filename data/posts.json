@@ -1,5 +1,12 @@
 [
   {
+    "title": "Event Loop와 비동기 처리",
+    "description": "브라우저가 어떻게 비동기 처리를 하는지 알아보자",
+    "date": "2024.08.15",
+    "categories": ["Javascript"],
+    "path": "eventLoop240815"
+  },
+  {
     "title": "Invalid hook call 에러와 useState",
     "description": "if문 안에서 useState를 사용할 수 없는 이유에 관하여",
     "date": "2024.07.30",
