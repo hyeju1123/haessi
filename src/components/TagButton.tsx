@@ -10,7 +10,12 @@ type Props = {
 };
 
 export default function TagButton({ tag, num }: Props) {
-  const { handleTag, tag: clickedTag } = useContext(TagsContext);
+  const {
+    handleTag,
+    handleDrawer,
+    showDrawer,
+    tag: clickedTag,
+  } = useContext(TagsContext);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -18,6 +23,7 @@ export default function TagButton({ tag, num }: Props) {
     e.preventDefault();
     pathname.startsWith("/posts") && router.push("/");
     handleTag(tag);
+    showDrawer && handleDrawer(false);
   };
 
   return (
