@@ -3,7 +3,9 @@
 import { useContext } from "react";
 
 import Link from "next/link";
+import BarsIcon from "./icons/BarsIcon";
 import ThemeIcon from "./icons/ThemeIcon";
+
 import useColorTheme from "@/hooks/ThemeColor";
 import { Roboto_Slab } from "next/font/google";
 import { ALL, TagsContext } from "@/provider/TagsProvider";
@@ -12,7 +14,7 @@ const roboto = Roboto_Slab({ subsets: ["latin"] });
 
 export default function Header() {
   const { theme, setTheme } = useColorTheme();
-  const { handleTag } = useContext(TagsContext);
+  const { handleTag, handleDrawer } = useContext(TagsContext);
 
   return (
     <header className="flex justify-between px-4 py-12">
@@ -21,9 +23,14 @@ export default function Header() {
           23haessi
         </h1>
       </Link>
-      <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-        <ThemeIcon />
-      </button>
+      <section>
+        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          <ThemeIcon />
+        </button>
+        <button onClick={() => handleDrawer(true)} className="2xl:hidden ml-2">
+          <BarsIcon />
+        </button>
+      </section>
     </header>
   );
 }
