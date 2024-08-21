@@ -24,10 +24,17 @@ export default function Header() {
         </h1>
       </Link>
       <section>
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        <button
+          aria-label="theme-button"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
           <ThemeIcon />
         </button>
-        <button onClick={() => handleDrawer(true)} className="2xl:hidden ml-2">
+        <button
+          aria-label="tags-button"
+          onClick={() => handleDrawer(true)}
+          className="2xl:hidden ml-2"
+        >
           <BarsIcon />
         </button>
       </section>
