@@ -34,7 +34,7 @@ const innerFn = outer();
 console.log(innerFn()); // 2
 ```
 
-`outer` 함수 내의 변수 `foo`는 `const innerFn = outer();` 코드가 실행되고 `outer`가 종료된 후에도 `console.log(innerFn());`에서 2로 찍히면서 접근이 가능하다는 것을 확인할 수 있다.
+`outer` 함수 내의 변수 `foo`는 `const innerFn = outer();` 코드가 실행되고 `outer`가 종료된 후에도 `console.log(innerFn());`에서 2로 찍히면서 접근이 가능하다는 것을 확인할 수 있다.
 
 이는 **어떤 값을 참조하는 변수가 하나라도 있다면 그 값은 수집 대상에 포함시키지 않는다**는 가비지 컬렉터의 동작 방식 때문이다. 즉 `outer` 함수가 **`inner` 함수를 반환하여 `innerFn`에 할당함으로써 `inner` 함수는 언제든 다시 호출될 가능성이 생겼다. 따라서 `inner`함수가 참조하고 있는 변수 `foo`가 `outer` 함수의 실행이 종료되더라도 가비지 컬렉터의 수집 대상이 되지 않았던 것**이다.
 
@@ -104,7 +104,7 @@ function Component() {
   return (
     <>
       <h1>{state}</h1> // 밑에 버튼을 클릭해도 여전히 before click이 그려진다.
-      <button onClick={handleClick}>Click Me</button>
+      <button onClick={handleClick}>Click Me</button>
     </>
   );
 }

@@ -11,7 +11,7 @@
 
 우선 비동기 처리와 관련한 브라우저의 내부 구조를 살펴보자.
 
-![브라우저 내부 구성](https://github.com/user-attachments/assets/60ec16e3-ade7-43fd-9f84-6c1de4e61063)
+![브라우저 내부 구성](/assets/eventLoop240815/img1.png)
 
 ### Memory Heap과 Call Stack
 
@@ -44,7 +44,7 @@ XMLHttpRequest, Timer API는 비동기적으로 동작하지만, 모든 API들�
 브라우저의 Queue에는 세 가지 종류가 있다. Macrotask Queue(task queue라고 하기도 함), Microtask Queue, Animation Frame.
 
 - **(Macro)Task Queue**: `setTimeout`, `fetch`, `addEventListener` 등 **비동기로 처리되는 함수들의 콜백함수**가 들어가는 큐.
-- **Microtask Queue**: `process.nextTick`, `MutationObserver` 의 콜백함수나 `Promise` 객체의 콜백함수 등, 우선적으로 비동기로 처리되는 함수들의 콜백함수가 들어가는 큐.
+- **Microtask Queue**: `process.nextTick`, `MutationObserver` 의 콜백함수나 `Promise` 객체의 콜백함수 등, 우선적으로 비동기로 처리되는 함수들의 콜백함수가 들어가는 큐.
 - **AnimationFrame Queue**: 브라우저 애니메이션 작업에 대한 처리를 담당하는 큐. 자바스크립트 애니메이션 동작을 제어하는 `requestAnimationFrame` 메소드를 통해 콜백을 등록하면, 이 큐에 적재되어 브라우저가 repaint 직전에 큐에 있는 작업들을 전부 처리한다.
 
 > Microtask Queue > AnimationFrame Queue > Task Queue
@@ -79,19 +79,19 @@ Callback Queue에는 (Macro)task Queue와 Microtask Queue가 있고, Microtask Q
 
 &nbsp;
 
-![1](https://github.com/user-attachments/assets/f2a3daee-c531-4ba2-92b5-21151f0e61af)
+![gif1](/assets/eventLoop240815/gif1.gif)
 
 1. 먼저 `Console.log('Start!')` 라는 코드가 Call Stack에 쌓인다. 콘솔에 'Start!'가 찍힌 후에 Call Stack에서 해당 코드가 빠져나간다.
 
 &nbsp;
 
-![2](https://github.com/user-attachments/assets/53f4a94f-9577-42aa-a326-21bef0d44940)
+![gif2](/assets/eventLoop240815/gif2.gif)
 
 2. `setTimeout` 함수 역시 Call Stack에 쌓인다. 그리고 setTimeout의 **콜백함수**는 이벤트 루프에 의해 Web API(이 경우에는 Timer API)로 옮겨진다. Timer API는 `setTimeout`에 인자로 넘어온 시간만큼 타이머를 작동한다. 이 경우는 0ms 이기에 바로 타이머가 종료된다.
 
 &nbsp;
 
-![3](https://github.com/user-attachments/assets/0c8ab6a2-bda7-4d66-b5fa-52c1533462e7)
+![gif3](/assets/eventLoop240815/gif3.gif)
 
 3. 타이머가 종료된 `setTimeout`의 콜백함수는 이제 Macrotask Queue로 옮겨진다. 아직 Call Stack이 비워지지 않은 상태이므로 태스크 큐에서 Call Stack이 모두 비워질 때까지 대기한다. (콜 스택이 비워진다는 것은 더 이상 실행 중인 동기 코드가 없다는 의미이다.)
 
@@ -99,19 +99,19 @@ Callback Queue에는 (Macro)task Queue와 Microtask Queue가 있고, Microtask Q
 
 &nbsp;
 
-![4](https://github.com/user-attachments/assets/ec8bdf16-7af0-4bfb-851c-f298a9b644bd)
+![gif4](/assets/eventLoop240815/gif4.gif)
 
 5. `console.log('End!')`가 Call Stack 쌓이고, 콘솔에 'End!'를 출력 후, Call Stack에서 빠지게 된다.
 
 &nbsp;
 
-![5](https://github.com/user-attachments/assets/d1e45947-c625-4fbf-ae6e-5826580f09ef)
+![gif5](/assets/eventLoop240815/gif5.gif)
 
 6. 이제 더 이상 실행 중인 동기 코드가 없어, Call Stack에 적재된 것이 없기에 Callback Queue를 확인해본다. Microtask Queue가 우선권을 가지므로, Microtask Queue 안에 있는 콜백 함수를 Call Stack으로 옮겨 처리한다. 다시 Microtask Queue에 대기 중인 함수가 있는지 확인하고, **Microtask Queue 내에 모든 콜백함수들을 Call Stack으로 처리**했다면, 이제 Macrotask Queue를 확인한다.
 
 &nbsp;
 
-![6](https://github.com/user-attachments/assets/bc6acfbb-202f-4e5a-b38c-45571f543ae9)
+![gif6](/assets/eventLoop240815/gif6.gif)
 
 7. Macrotask Queue에서 대기 중인 setTimeout의 콜백함수를 이벤트 루프가 Call Stack으로 옮긴다. 그 후 콜백 함수를 실행하고 Call Stack에서 제거하면 이 코드의 실행은 끝이 난다.
 
@@ -195,13 +195,13 @@ const promise = () =>
 
 &nbsp;
 
-![img1](https://github.com/user-attachments/assets/fe09d4cf-d604-45a7-af2d-ff67642daabf)
+![gif7](/assets/eventLoop240815/gif7.gif)
 
 1. 먼저 Call Stack에 `console.log("Before Function!");`가 들어가고 실행된다. 실행된 후 해당 코드는 스택에서 제거된다.
 
 &nbsp;
 
-![img2](https://github.com/user-attachments/assets/bb76aab0-af6d-43b8-a242-8640017105b3)
+![gif8](/assets/eventLoop240815/gif8.gif)
 
 2. 그 다음 `myFunc()` 코드가 Call Stack에 쌓이고 실행된다. 먼저 'In function!'이 콘솔에 찍힌다.
 
@@ -209,7 +209,7 @@ const promise = () =>
 
 &nbsp;
 
-![img3](https://github.com/user-attachments/assets/5b74b0ae-fb92-4e26-8356-a6607d02fb29)
+![gif9](/assets/eventLoop240815/gif9.gif)
 
 3. Promise 객체를 반환하는 `one()` 비동기 함수를 호출한다. `one()` 함수가 성공된 프로미스를 반환하면 `one()` 함수의 실행이 끝나고 Call Stack에서 제거된다. 그리고 **이 때 await 키워드로 인해 myFunc 함수 코드의 나머지 부분은 Microtask Queue로 이동**한다.
 
@@ -228,13 +228,13 @@ one().then(res => {
 
 &nbsp;
 
-![img4](https://github.com/user-attachments/assets/5cd237c0-68ab-4ccd-ba82-55e414ead956)
+![gif10](/assets/eventLoop240815/gif10.gif)
 
 4. Call Stack은 아직 담아야할 동기 코드가 남아있다. `console.log('After function!');` 을 스택에 넣은 후 콘솔에 출력하고 이를 스택에서 제거한다.
 
 &nbsp;
 
-![img5](https://github.com/user-attachments/assets/23b01af5-0d47-4ed6-8ae1-2034afe9cba4)
+![gif11](/assets/eventLoop240815/gif11.gif)
 
 5. 이제 더 이상 실행 중인 동기 코드가 없기 때문에 Callback Queue를 확인한다. Microtask Queue에서 대기하고 있는 `myFunc()` 코드가 있으므로 이를 Call Stack으로 이벤트 루프가 이동시킨다. 실행 후 모든 코드가 Call Stack에서 제거되면 프로그램이 종료된다.
 

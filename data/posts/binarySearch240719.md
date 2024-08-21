@@ -13,19 +13,19 @@
 
 &nbsp; &nbsp;
 
-![img1](https://github.com/user-attachments/assets/80dea845-7bdf-49cc-8bd7-81409a42772a)
+![img1](/assets/binarySearch240719/img1.png)
 
 예를 들어 `arr = [1, 2, 3, 4, 5]`라는 배열이 있을 때, parameter를 3으로 둬보자.
 
 &nbsp; &nbsp;
 
-![img2](https://github.com/user-attachments/assets/f92c44e8-4432-488e-8c19-4cdabdcab72e)
+![img2](/assets/binarySearch240719/img2.png)
 
-**3보다 크거나 같은 수**라는 조건으로 가져가면 `arr`은 `[false, false, true, true, true]`이 될 것이다.
+**3보다 크거나 같은 수**라는 조건으로 가져가면 `arr`은 `[false, false, true, true, true]`이 될 것이다.
 
 &nbsp; &nbsp;
 
-![pic3](https://github.com/user-attachments/assets/27ca9eb9-96c2-46a1-ad87-9d0c84b6e577)
+![img3](/assets/binarySearch240719/img3.png)
 
 반대로, **3보다 작거나 같은 수**라는 조건으로 가져가면 `arr`은 `[true, true, true, false, false]`가 될 것이다.
 
@@ -106,13 +106,13 @@ console.log(binarySearch([1, 2, 3, 4, 5], 7)); // -1
 
 &nbsp; &nbsp;
 
-![pic4](https://github.com/user-attachments/assets/8dbb75ab-99ca-4098-9e92-4050467cbd71)
+![img4](/assets/binarySearch240719/img4.png)
 
 [이 글](https://www.acmicpc.net/blog/view/109)에 따르면 **Lower Bound는 원래 v[i-1] < k <= v[i]인 i를 찾아주는 함수로, v[i] >= k인 i의 최솟값을 반환**한다. 그러니까 `arr = [1, 2, 3, 3, 4]`라면 Lower Bound(3)는 index 2를 반환한다.
 
 &nbsp; &nbsp;
 
-![pic5](https://github.com/user-attachments/assets/fda3b138-f64b-483e-95f5-1d415c035dcd)
+![img5](/assets/binarySearch240719/img5.png)
 
 반면 **Upper Bound는 v[i-1] <= k < v[i]인 i를 찾아주는 함수로, v[i] > k인 i의 최솟값을 반환**한다. `arr = [1, 2, 3, 3, 4]`라면 Upper Bound(3)은 index 4를 반환한다.
 
