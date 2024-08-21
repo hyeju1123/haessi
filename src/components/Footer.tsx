@@ -13,10 +13,10 @@ export default function Footer() {
       className={`flex flex-col items-center justify-center p-8 border-t-2 border-solid border-tagBg ${roboto.className} text-text`}
     >
       <section className="flex mb-2">
-        <Link href={"https://github.com/hyeju1123"}>
+        <Link aria-label="github" href="https://github.com/hyeju1123">
           <GithubIcon />
         </Link>
-        <Link href="mailto:hjjun1123@gmail.com">
+        <Link aria-label="mail" href="mailto:hjjun1123@gmail.com">
           <EnvelopeIcon />
         </Link>
       </section>

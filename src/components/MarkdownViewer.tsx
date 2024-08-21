@@ -43,15 +43,20 @@ export default function MarkdownViewer({ content }: { content: string }) {
             </code>
           );
         },
-        img: image => (
-          <Image
-            className="w-full max-h-90 object-cover"
-            src={image.src || ""}
-            alt={image.alt || ""}
-            width={900}
-            height={450}
-          />
-        ),
+        img: image => {
+          const isGif = image.src?.endsWith(".gif");
+
+          return (
+            <Image
+              className="w-full max-h-90 object-cover"
+              src={image.src || ""}
+              alt={image.alt || ""}
+              width={900}
+              height={450}
+              unoptimized={isGif}
+            />
+          );
+        },
       }}
     >
       {content}

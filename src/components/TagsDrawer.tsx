@@ -10,11 +10,11 @@ export default async function TagsDrawer() {
     <nav className="bg-background w-80 min-h-screen p-12 flex flex-col shadow-md">
       <CloseDrawerButton />
       <h2 className="text-xl font-semibold text-text my-8">TAGS</h2>
-      <ul>
+      <div>
         {Object.entries(tags).map(([tag, num]) => (
           <TagButton key={tag} tag={tag} num={num} />
         ))}
-      </ul>
+      </div>
     </nav>
   );
 }
