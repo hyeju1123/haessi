@@ -1,5 +1,12 @@
 [
   {
+    "title": "css transition과 animation",
+    "description": "자주 헷갈리는 css 애니메이션 프로퍼티들",
+    "date": "2025.01.30",
+    "categories": ["css"],
+    "path": "transitionAnimation250128"
+  },
+  {
     "title": "Event Loop와 비동기 처리",
     "description": "브라우저가 어떻게 비동기 처리를 하는지 알아보자",
     "date": "2024.08.15",
