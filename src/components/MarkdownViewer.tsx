@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import Markdown from "react-markdown";
 
 import useThemeColor from "@/hooks/ThemeColor";
@@ -12,12 +13,13 @@ import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 
 export default function MarkdownViewer({ content }: { content: string }) {
-  const { codeBg } = useThemeColor();
+  const { codeBg, text } = useThemeColor();
 
   return (
     <Markdown
-      className="prose max-w-none mt-8"
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+      className="prose max-w-none mt-8"
       components={{
         code(props) {
           const { children, className, node, ...rest } = props;
@@ -56,6 +58,14 @@ export default function MarkdownViewer({ content }: { content: string }) {
               unoptimized={isGif}
             />
           );
+        },
+        h2(props) {
+          const { node, ...rest } = props;
+          return <h2 style={{ letterSpacing: "0.5px" }} {...rest} />;
+        },
+        th(props) {
+          const { node, ...rest } = props;
+          return <th style={{ color: text }} {...rest} />;
         },
       }}
     >
