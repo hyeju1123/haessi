@@ -1,5 +1,12 @@
 [
   {
+    "title": "[HTTP 완벽 가이드] 1장. HTTP 개관",
+    "description": "HTTP 완벽 가이드 도서를 읽고 정리한 포스팅",
+    "date": "2025.02.02",
+    "categories": ["http", "CS"],
+    "path": "httpCh01_250202"
+  },
+  {
     "title": "css transition과 animation",
     "description": "자주 헷갈리는 css 애니메이션 프로퍼티들",
     "date": "2025.01.30",
