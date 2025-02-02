@@ -55,6 +55,7 @@ export default function MarkdownViewer({ content }: { content: string }) {
               alt={image.alt || ""}
               width={900}
               height={450}
+              style={image.style}
               unoptimized={isGif}
             />
           );
